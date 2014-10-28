@@ -1,0 +1,29 @@
+package com.lw;
+
+//import java.util.concurrent.TimeUnit;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Teacherlogin {
+	private WebDriver driver;
+	public String baseurl;
+
+@Before
+public void start(){
+	driver = new FirefoxDriver();
+    baseurl = "http://dev.lw.srijan-sites.com/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    driver.manage().window().maximize();
+	
+      }
+@Test
+public void teacherlogin(){
+	driver.get(baseurl);
+}
+}

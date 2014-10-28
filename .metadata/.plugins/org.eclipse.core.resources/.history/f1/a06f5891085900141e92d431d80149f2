@@ -1,0 +1,33 @@
+package Com.isha;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.BeforeMethod;
+
+public class login2 extends login2{
+	  private WebDriver driver;
+	  private String baseUrl;
+	@BeforeMethod
+	 public void setup(String browser)
+	 {
+	  if(browser.equalsIgnoreCase("firefox"))
+	  {
+	   driver = new FirefoxDriver();
+	  }
+	  else if(browser.equalsIgnoreCase("iexplorer"))
+	  {
+	// Update the driver path with your location
+	   System.setProperty("webdriver.ie.driver", "C:\\Program Files\\Internet Explorer\\IEDriverServer_Win32_2.41.0");
+	   driver = new InternetExplorerDriver();
+	  }
+	  else if(browser.equalsIgnoreCase("chrome"))
+	  {
+
+	   System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\chromedriver_win32");
+	   driver = new ChromeDriver();
+	  }
+	  driver.manage().window().maximize();
+	 }
+}

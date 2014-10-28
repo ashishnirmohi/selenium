@@ -1,0 +1,61 @@
+package com.lw;
+
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+//import org.openqa.selenium.remote.RemoteWebDriver;
+//import org.openqa.selenium.support.ui.Select;
+
+	public class subscribe {
+	  private WebDriver driver;
+	  private String baseUrl;
+	
+	 
+	  @Before
+	  public void setUp() throws Exception {
+	     driver = new FirefoxDriver();
+	    System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver");
+	    WebDriver driver = new ChromeDriver();
+	    baseUrl = "http://dev.lw.srijan-sites.com/";
+	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	    driver.manage().window().maximize();
+	  }
+
+	  @Test
+	  public void testSubscribe() throws Exception {
+		driver.get(baseUrl + "/");
+	    driver.findElement(By.linkText("Subscribe for 1 month trail period")).click();
+	    driver.findElement(By.id("edit-field-first-name-und-0-value")).clear();
+	    driver.findElement(By.id("edit-field-first-name-und-0-value")).sendKeys("Ashish");
+	    driver.findElement(By.id("edit-field-last-name-und-0-value")).clear();
+	    driver.findElement(By.id("edit-field-last-name-und-0-value")).sendKeys("Kumar");
+	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	    driver.findElement(By.id("autocomplete-deluxe-input--3")).sendKeys("India");
+	    driver.findElement(By.id("autocomplete-deluxe-input")).sendKeys("Himachal Pardesh");
+	    driver.findElement(By.id("autocomplete-deluxe-input--2")).sendKeys("Dharamshala");
+	    
+	    /*
+	    Select country = new Select(driver.findElement(By.xpath(".//*[@id='autocomplete-deluxe-input--3']")));
+	    		country.selectByVisibleText("India");    		
+	    Select state = new Select(driver.findElement(By.xpath(".//*[@id='autocomplete-deluxe-input--3']")));
+	    		state.selectByVisibleText("India");
+		Select city = new Select(driver.findElement(By.xpath(".//*[@id='autocomplete-deluxe-input--3']")));
+	    		city.selectByVisibleText("India"); */
+	    driver.findElement(By.id("edit-field-mobile-no-und-0-value")).sendKeys("5454554545");
+	    driver.findElement(By.id("edit-pass-pass2")).clear();
+	    driver.findElement(By.id("edit-pass-pass2")).sendKeys("test1234");
+	    driver.findElement(By.id("edit-submit")).click();
+	    driver.findElement(By.cssSelector("a.message-close")).click();
+	  }
+
+	  @After
+	  public void tearDown() throws Exception {
+	    driver.quit();
+	    
+	    }
+	  }
